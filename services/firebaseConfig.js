@@ -3,16 +3,17 @@ import { initializeApp } from "firebase/app";
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import { isSupported } from "firebase/analytics";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET, FIREBASE_MESSAGING_SENDER_ID, FIREBASE_APP_ID, FIREBASE_MEASUREMENT_ID } from "@env";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB0NcTxBZauKFfRoWPfhA7-rdrdEG6FYtA",
-  authDomain: "emotional-journal-12cb4.firebaseapp.com",
-  projectId: "emotional-journal-12cb4",
-  storageBucket: "emotional-journal-12cb4.appspot.com",
-  messagingSenderId: "400673749484",
-  appId: "1:400673749484:web:c412cb33111f2d72ae68c9",
-  measurementId: "G-E5TPBL8KN8"
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+  appId: FIREBASE_APP_ID,
+  measurementId: FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -30,6 +31,6 @@ export const auth = initializeAuth(app, {
     const { getAnalytics } = await import("firebase/analytics");
     const analytics = getAnalytics(app);
   } else {
-    console.warn("Firebase Analytics er ikke understøttet i dette miljø.");
+    console.warn("Firebase Analytics is not supported in this environment.");
   }
 })();
